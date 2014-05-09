@@ -2,15 +2,14 @@ module Lowrezjam {
 
     export class Game extends Phaser.Game {
         constructor() {
-
-            super(800, 600, Phaser.AUTO, 'content', null);
+            super(32, 32, Phaser.CANVAS, 'content', { create: this.create });
 
             this.state.add('Main', MainState, false);
-
-            this.state.start('Main');
-
         }
 
+        create () {
+            this.state.start('Main');
+        }
     }
 
 }
