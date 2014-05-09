@@ -3,6 +3,7 @@ var open         = require("gulp-open");
 var connect      = require('gulp-connect');
 var typescript   = require('gulp-tsc');
 var plumber      = require('gulp-plumber');
+var livereload   = require('gulp-livereload');
 
 var config = {
     port: 9005
@@ -20,6 +21,7 @@ gulp.task('ts', function () {
             outDir: './build/'
         }))
         .pipe(gulp.dest('./build/'))
+        .pipe(livereload())
         .pipe(connect.reload());
 });
 
