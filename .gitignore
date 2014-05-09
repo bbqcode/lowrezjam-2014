@@ -17,3 +17,7 @@ node_modules
 
 *.sln
 *.suo
+.idea/
+
+# Mac
+.DS_Store
