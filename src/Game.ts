@@ -1,13 +1,17 @@
+/// <reference path="../node_modules/Phaser/build/phaser.d.ts" />
 module Lowrezjam {
 
     export class Game extends Phaser.Game {
-        constructor() {
-            super(32, 32, Phaser.CANVAS, 'content', { create: this.create });
+        gameScale: number;
 
-            this.state.add('Main', MainState, false);
+        constructor() {
+            this.gameScale = 10;
+            var size = (32 * this.gameScale);
+            super(size, size, Phaser.CANVAS, 'game-container', { create: this.create });
         }
 
-        create () {
+        create() {
+            this.state.add('Main', MainState, false);
             this.state.start('Main');
         }
     }

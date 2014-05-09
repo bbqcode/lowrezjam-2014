@@ -2,8 +2,26 @@
 <html>
 <head>
     <title>#LOWREZJAM-2014</title>
+    <style>
+        body {
+            margin:0;
+        }
+        canvas {
+            image-rendering: optimizeSpeed;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: -webkit-optimize-contrast;
+            image-rendering: optimize-contrast;
+            -ms-interpolation-mode: nearest-neighbor;
+            display: block;
+            -webkit-user-select: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            cursor: inherit;
+            overflow: hidden;
+        }
+    </style>
 </head>
 <body>
+    <div id="game-container"></div>
     <script type="text/javascript" src="/node_modules/Phaser/build/phaser.js"></script>
     <script type="text/javascript" src="/build/app.js"></script>
 </body>
