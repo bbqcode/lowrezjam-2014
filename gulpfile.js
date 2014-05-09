@@ -2,6 +2,7 @@ var gulp         = require('gulp');
 var open         = require("gulp-open");
 var connect      = require('gulp-connect');
 var typescript   = require('gulp-tsc');
+var plumber      = require('gulp-plumber');
 
 var config = {
     port: 9005
@@ -12,6 +13,7 @@ gulp.task('ts', function () {
             './src/**/*.ts',
             './node_modules/Phaser/build/phaser.d.ts'
         ])
+        .pipe(plumber())
         .pipe(typescript({
             sourcemap: true,
             out: 'app.js',
