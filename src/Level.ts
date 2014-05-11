@@ -5,11 +5,32 @@
         map: any;
 
         constructor() {
-            this.display = new ROT.Display({});
-            document.body.appendChild(this.display.getContainer());
+            var tileset = document.createElement("img");
+            tileset.src = "assets/tileset.png";
+            tileset.onload = function () {
+                var options = {
+                    layout: "tile",
+                    bg: "black",
+                    tileWidth: 1,
+                    tileHeight: 1,
+                    tileSet: tileset,
+                    tileMap: {
+                        "1": [0, 0],
+                        "2": [0, 1],
+                        "3": [0, 2],
+                        "4": [0, 3],
+                        "5": [0, 4]
+                    },
+                    width: 32,
+                    height: 32
+                }
 
-            this.generateMap();
-            this.drawWholeMap();
+                this.display = new ROT.Display(options);
+                document.body.appendChild(this.display.getContainer());
+
+                this.generateMap();
+                this.drawWholeMap();
+            }.bind(this);
         }
 
         generateMap() {
@@ -23,7 +44,7 @@
                 }
 
                 var key = x + "," + y;
-                this.map[key] = "*";
+                this.map[key] = "1";
             }
 
             digger.create(digCallback.bind(this));
