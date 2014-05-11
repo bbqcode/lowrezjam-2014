@@ -1,4 +1,4 @@
-module ROT {
+declare module ROT {
 
     interface IFOV {
         compute(x: number, y: number, R: number, callback: (x: number, y: number, r: number) => void );
@@ -84,11 +84,11 @@ module ROT {
 
     export class Text {
         static measure(str: string, maxWidth: number): number;
-        static tokenize(str: string, maxWidth: number): Array;
+        static tokenize(str: string, maxWidth: number): Array<string>;
     }
 }
 
-module ROT.FOV {
+declare module ROT.FOV {
     export class DiscreteShadowcasting implements IFOV {
         compute(x: number, y: number, R: number, callback: (x: number, y: number, r: number) => void );
         constructor(lightPassesCallback: Function, options: any);
@@ -100,7 +100,7 @@ module ROT.FOV {
     }
 }
 
-module ROT.Map {
+declare module ROT.Map {
     interface IFeature {
         create();
         create(digCallback: Function);
@@ -156,7 +156,7 @@ module ROT.Map {
 
 }
 
-module ROT.Map.Feature {
+declare module ROT.Map.Feature {
     export class Corridor implements IFeature {
         create();
         create(digCallback: Function);
@@ -188,14 +188,14 @@ module ROT.Map.Feature {
     }
 }
 
-module ROT.Noise {
+declare module ROT.Noise {
     export class Simplex {
         constructor(gradients?: number);
         get (xin: number, yin: number): number;
     }
 }
 
-module ROT.Path {
+declare module ROT.Path {
     export class AStar implements IPath {
         constructor(toX: number, toY: number, passableCallback: (x: number, y: number) => void , options: any);
         compute(fromX: number, fromY: number, callback: (x: number, y: number) => void);
