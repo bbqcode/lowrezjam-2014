@@ -4,39 +4,29 @@
         display: ROT.Display;
         map: any;
 
-        constructor() {
-            var tileset = document.createElement("img");
-            tileset.src = "assets/tileset.png";
-            tileset.onload = function () {
-                var options = {
-                    layout: "tile",
-                    bg: "black",
-                    tileWidth: 1,
-                    tileHeight: 1,
-                    tileSet: tileset,
-                    tileMap: {
-                        "1": [0, 0],
-                        "2": [0, 1],
-                        "3": [0, 2],
-                        "4": [0, 3],
-                        "5": [0, 4]
-                    },
-                    width: 32,
-                    height: 32
-                }
+        constructor(scale: number, tileset: HTMLImageElement) {
+            var options = {
+                layout: "tile",
+                bg: "black",
+                tileWidth: scale,
+                tileHeight: scale,
+                tileSet: tileset,
+                tileMap: GetTileMap(scale),
+                width: 32,
+                height: 32
+            }
 
-                this.display = new ROT.Display(options);
-                document.body.appendChild(this.display.getContainer());
+            this.display = new ROT.Display(options);
+            document.body.appendChild(this.display.getContainer());
 
-                this.generateMap();
-                this.drawWholeMap();
-            }.bind(this);
+            this.generateMap();
+            this.drawWholeMap();
         }
 
         generateMap() {
             this.map = {};
 
-            var digger = new ROT.Map.Digger(100, 100, {});
+            var digger = new ROT.Map.Digger(50, 50, {});
 
             var digCallback = function (x, y, value) {
                 if (value) {
@@ -44,7 +34,7 @@
                 }
 
                 var key = x + "," + y;
-                this.map[key] = "1";
+                this.map[key] = Tiles.GROUND.toString();
             }
 
             digger.create(digCallback.bind(this));
