@@ -1,4 +1,6 @@
 /// <reference path="../node_modules/Phaser/build/phaser.d.ts" />
+/// <reference path="MainState.ts" />
+
 module Lowrezjam {
 
     export class Game extends Phaser.Game {
