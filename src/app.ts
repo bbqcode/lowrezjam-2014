@@ -1,3 +1,4 @@
 window.onload = () => {
-    window["game"] = new Lowrezjam.Game();
+    var g = new Lowrezjam.Level();
+    window["game"] = g;
 };
